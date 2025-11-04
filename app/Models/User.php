@@ -68,4 +68,14 @@ class User extends Authenticatable
     {
         return $this->role === 'editor';
     }
+
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
