@@ -1,59 +1,201 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# News Portal - Modern Laravel News Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive, professional news portal built with Laravel 12 and Blade templates, featuring a beautiful modern design inspired by Nepal's leading news websites.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Frontend
+- **Modern, Responsive Design** - Beautiful UI with Tailwind CSS
+- **Homepage** with breaking news, featured articles, and latest news
+- **Category Pages** - Browse articles by category
+- **Article Pages** - Full article view with related articles
+- **Search Functionality** - Search articles by title, excerpt, or content
+- **Trending Articles** - Most viewed articles sidebar
+- **Mobile-Friendly** - Fully responsive design
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Admin Panel
+- **Dashboard** - Overview with statistics and quick actions
+- **Article Management** - Full CRUD operations for articles
+- **Category Management** - Manage news categories with colors
+- **Tag Management** - Organize articles with tags
+- **User Roles** - Admin, Editor, and Author roles
+- **Image Upload** - Featured images for articles
+- **Draft/Published Status** - Control article visibility
+- **Featured & Breaking News** - Mark important articles
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Database Structure
+- **Users** - With role-based access (admin, editor, author)
+- **Categories** - Colored categories with ordering
+- **Tags** - Article tagging system
+- **Articles** - Full article management with relationships
+- **Article-Tag** - Many-to-many relationship
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Prerequisites
+- PHP 8.4+
+- Composer
+- MySQL
+- Node.js & NPM
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Setup Steps
 
-## Laravel Sponsors
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd newsportaldesign
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. **Install Dependencies**
+   ```bash
+   composer install
+   npm install
+   ```
 
-### Premium Partners
+3. **Environment Configuration**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+4. **Database Setup**
+   - Create a MySQL database named `newsportal`
+   - Update `.env` file with your database credentials:
+     ```
+     DB_CONNECTION=mysql
+     DB_HOST=127.0.0.1
+     DB_PORT=3306
+     DB_DATABASE=newsportal
+     DB_USERNAME=your_username
+     DB_PASSWORD=your_password
+     ```
 
-## Contributing
+5. **Run Migrations and Seeders**
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+6. **Create Storage Link**
+   ```bash
+   php artisan storage:link
+   ```
 
-## Code of Conduct
+7. **Build Assets**
+   ```bash
+   npm run build
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+8. **Start Development Server**
+   ```bash
+   php artisan serve
+   ```
 
-## Security Vulnerabilities
+Visit `http://localhost:8000` to view the application.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Default Users
+
+After seeding, you can log in with these accounts:
+
+- **Admin**
+  - Email: admin@newsportal.com
+  - Password: password
+
+- **Author**
+  - Email: author@newsportal.com
+  - Password: password
+
+- **Editor**
+  - Email: editor@newsportal.com
+  - Password: password
+
+## Categories
+
+The seeder creates 8 default categories:
+- Politics (Red)
+- Business (Green)
+- Technology (Blue)
+- Sports (Orange)
+- Entertainment (Pink)
+- Health (Purple)
+- Education (Indigo)
+- World (Teal)
+
+## Usage
+
+### Creating Articles
+1. Log in with an admin/editor/author account
+2. Navigate to Admin Dashboard
+3. Click "Create Article"
+4. Fill in the form with title, content, category, tags
+5. Upload a featured image (optional)
+6. Set as featured or breaking news (optional)
+7. Choose status (draft/published)
+8. Click Save
+
+### Managing Content
+- **Articles**: `/admin/articles` - Manage all articles
+- **Categories**: `/admin/categories` - Manage categories
+- **Tags**: `/admin/tags` - Manage tags
+- **Dashboard**: `/admin/dashboard` - View statistics
+
+### Frontend Routes
+- Homepage: `/`
+- Article: `/articles/{slug}`
+- Category: `/categories/{slug}`
+- Search: `/search?q=query`
+
+## Technology Stack
+
+- **Framework**: Laravel 12
+- **Authentication**: Laravel Breeze
+- **Frontend**: Blade Templates + Tailwind CSS
+- **Database**: MySQL
+- **Assets**: Vite
+- **PHP**: 8.4
+
+## Design Inspiration
+
+The design is inspired by modern Nepal news portals with:
+- Clean, professional layout
+- Color-coded categories
+- Breaking news banners
+- Featured article sections
+- Trending sidebar
+- Responsive grid layouts
+
+## Project Structure
+
+```
+newsportaldesign/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Admin/          # Admin controllers
+│   │   │   ├── ArticleController.php
+│   │   │   ├── CategoryController.php
+│   │   │   └── HomeController.php
+│   │   └── Middleware/
+│   │       └── IsAdmin.php     # Admin access middleware
+│   └── Models/
+│       ├── Article.php
+│       ├── Category.php
+│       ├── Tag.php
+│       └── User.php
+├── database/
+│   ├── migrations/             # Database migrations
+│   └── seeders/                # Sample data seeders
+├── resources/
+│   ├── views/
+│   │   ├── admin/              # Admin panel views
+│   │   ├── articles/           # Article views
+│   │   ├── categories/         # Category views
+│   │   ├── layouts/            # Layout templates
+│   │   └── home.blade.php      # Homepage
+│   └── css/                    # Stylesheets
+└── routes/
+    └── web.php                 # Application routes
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Open-source software for educational and commercial use.
